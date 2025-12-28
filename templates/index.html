@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Equation Solver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .equation-display {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            color: #333;
+        }
+
+        .equation-display .variable {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+        }
+
+        .results h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .result-item {
+            margin: 15px 0;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        .result-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .result-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .error {
+            background: #fee;
+            border: 2px solid #fcc;
+            color: #c33;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .success {
+            color: #2d7d2d;
+        }
+
+        .complex {
+            color: #d97706;
+        }
+
+        .info-box {
+            background: #e0e7ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quadratic Equation Solver</h1>
+        <p class="subtitle">Solve equations of the form ax² + bx + c = 0</p>
+
+        <div class="equation-display">
+            <span class="variable">a</span>x² + <span class="variable">b</span>x + <span class="variable">c</span> = 0
+        </div>
+
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="a">Coefficient a (x² term):</label>
+                <input type="number" id="a" name="a" step="any" value="{{.A}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="b">Coefficient b (x term):</label>
+                <input type="number" id="b" name="b" step="any" value="{{.B}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="c">Coefficient c (constant term):</label>
+                <input type="number" id="c" name="c" step="any" value="{{.C}}" required>
+            </div>
+
+            <button type="submit" class="btn">Solve Equation</button>
+        </form>
+
+        {{if .ShowResults}}
+            {{if .Error}}
+                <div class="error">
+                    <strong>Error:</strong> {{.Error}}
+                </div>
+            {{else if .HasSolution}}
+                <div class="results">
+                    <h2>Results</h2>
+
+                    {{if .IsLinear}}
+                        <div class="info-box">
+                            <h3>Linear Equation Detected</h3>
+                            <p>Since a = 0, this is a linear equation: bx + c = 0</p>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Solution:</span>
+                            <span class="result-value success">x = {{printf "%.6f" .Root1}}</span>
+                        </div>
+                    {{else}}
+                        <div class="result-item">
+                            <span class="result-label">Discriminant (Δ = b² - 4ac):</span>
+                            <span class="result-value">{{printf "%.6f" .Discriminant}}</span>
+                        </div>
+
+                        {{if .RealRoots}}
+                            {{if eq .Root1 .Root2}}
+                                <div class="info-box">
+                                    <h3>One Real Root (Repeated)</h3>
+                                    <p>The discriminant is zero, so there is one repeated real root.</p>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Root:</span>
+                                    <span class="result-value success">x = {{printf "%.6f" .Root1}}</span>
+                                </div>
+                            {{else}}
+                                <div class="info-box">
+                                    <h3>Two Distinct Real Roots</h3>
+                                    <p>The discriminant is positive, so there are two distinct real roots.</p>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Root 1:</span>
+                                    <span class="result-value success">x₁ = {{printf "%.6f" .Root1}}</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Root 2:</span>
+                                    <span class="result-value success">x₂ = {{printf "%.6f" .Root2}}</span>
+                                </div>
+                            {{end}}
+                        {{else}}
+                            <div class="info-box">
+                                <h3>Complex Roots</h3>
+                                <p>The discriminant is negative, so there are two complex conjugate roots.</p>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Root 1:</span>
+                                <span class="result-value complex">x₁ = {{printf "%.6f" .RealPart}} + {{printf "%.6f" .ImaginaryPart}}i</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Root 2:</span>
+                                <span class="result-value complex">x₂ = {{printf "%.6f" .RealPart}} - {{printf "%.6f" .ImaginaryPart}}i</span>
+                            </div>
+                        {{end}}
+                    {{end}}
+                </div>
+            {{end}}
+        {{end}}
+
+        <div class="info-box" style="margin-top: 30px;">
+            <h3>About Quadratic Equations</h3>
+            <p>
+                A quadratic equation is a second-degree polynomial equation in a single variable.
+                The discriminant (Δ = b² - 4ac) determines the nature of the roots:
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px; color: #555;">
+                <li>Δ > 0: Two distinct real roots</li>
+                <li>Δ = 0: One repeated real root</li>
+                <li>Δ < 0: Two complex conjugate roots</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
