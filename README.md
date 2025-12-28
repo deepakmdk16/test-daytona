@@ -1,9 +1,14 @@
-# Calculator App
+# Test Repository
+
+This repository contains multiple calculator applications for demonstration purposes.
+
+## Applications
+
+### 1. Calculator App (JavaScript)
 
 A beautiful, responsive web-based calculator application built with HTML, CSS, and JavaScript.
 
-## Features
-
+**Features:**
 - Basic arithmetic operations: addition, subtraction, multiplication, division
 - Modulo operation support
 - Clean and modern user interface
@@ -13,50 +18,87 @@ A beautiful, responsive web-based calculator application built with HTML, CSS, a
 - Decimal number support
 - Number formatting with thousand separators
 
-## Usage
-
-### Mouse/Touch Input
+**Usage:**
 Simply open `index.html` in your web browser and click the buttons to perform calculations.
 
-### Keyboard Input
-- **Numbers**: Type 0-9
-- **Decimal**: Type `.` (period)
-- **Operations**: Type `+`, `-`, `*`, `/`, or `%`
-- **Calculate**: Press `Enter` or `=`
-- **Clear**: Press `Escape`
-- **Delete**: Press `Backspace`
+### 2. Quadratic Equation Solver (Go)
 
-## Operations
+A web-based quadratic equation solver built with Go that solves equations of the form **ax² + bx + c = 0**.
 
-- **AC (All Clear)**: Clears all input and resets the calculator
-- **DEL (Delete)**: Removes the last entered digit
-- **% (Modulo)**: Calculates the remainder of division
-- **÷ (Division)**: Divides numbers
-- **× (Multiplication)**: Multiplies numbers
-- **- (Subtraction)**: Subtracts numbers
-- **+ (Addition)**: Adds numbers
-- **= (Equals)**: Computes the result
+**Features:**
+- Solves quadratic equations with real or complex roots
+- Handles linear equations (when a = 0)
+- Calculates and displays the discriminant
+- Beautiful, responsive web interface
+- Detailed explanation of results
+- Supports positive, negative, and zero discriminants
+
+**Installation:**
+
+1. Make sure you have Go installed (version 1.21 or higher)
+2. Navigate to the repository directory
+3. Run the application:
+   ```bash
+   go run main.go
+   ```
+4. Open your browser and navigate to `http://localhost:8080`
+
+**Building the Application:**
+
+To build a standalone executable:
+```bash
+go build -o quadratic-solver main.go
+./quadratic-solver
+```
+
+**How It Works:**
+
+The quadratic equation solver uses the quadratic formula to find the roots:
+
+- **Discriminant (Δ)**: Δ = b² - 4ac
+  - If Δ > 0: Two distinct real roots
+  - If Δ = 0: One repeated real root
+  - If Δ < 0: Two complex conjugate roots
+
+**Example Usage:**
+
+1. Enter coefficient values:
+   - a = 1, b = -3, c = 2 → Roots: x₁ = 2, x₂ = 1
+   - a = 1, b = -2, c = 1 → Root: x = 1 (repeated)
+   - a = 1, b = 0, c = 1 → Complex roots: x = ±i
 
 ## Technical Details
 
+### JavaScript Calculator
 - Pure JavaScript implementation with no external dependencies
 - Object-oriented design using ES6 classes
 - Event-driven architecture
 - Responsive CSS Grid layout
-- Modern gradient background design
+
+### Go Quadratic Solver
+- Built with Go standard library (no external dependencies)
+- HTTP server with HTML templating
+- Mathematical computation using Go's math package
+- RESTful form handling
 
 ## Browser Compatibility
 
-Works on all modern browsers including:
+Both applications work on all modern browsers including:
 - Chrome
 - Firefox
 - Safari
 - Edge
 
-## Getting Started
+## Repository Structure
 
-1. Clone or download this repository
-2. Open `index.html` in your web browser
-3. Start calculating!
-
-No build process or installation required.
+```
+.
+├── index.html              # JavaScript calculator HTML
+├── script.js               # JavaScript calculator logic
+├── style.css               # JavaScript calculator styles
+├── main.go                 # Go quadratic solver backend
+├── go.mod                  # Go module definition
+├── templates/
+│   └── index.html         # Go quadratic solver HTML template
+└── README.md              # This file
+```
