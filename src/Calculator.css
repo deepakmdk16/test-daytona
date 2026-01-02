@@ -1,0 +1,134 @@
+.calculator {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  outline: none;
+}
+
+.display {
+  background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.previous-operand {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.current-operand {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  min-height: 2.5rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-number {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #2d3436;
+}
+
+.btn-number:hover {
+  background: linear-gradient(135deg, #e8ecf1 0%, #b5c0d6 100%);
+}
+
+.btn-operator {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-operator:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #663d8f 100%);
+}
+
+.btn-clear {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.btn-clear:hover {
+  background: linear-gradient(135deg, #e582ea 0%, #e44659 100%);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(135deg, #e95f89 0%, #edd02f 100%);
+}
+
+.btn-equals {
+  background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+  color: white;
+}
+
+.btn-equals:hover {
+  background: linear-gradient(135deg, #1fbebf 0%, #2a0756 100%);
+}
+
+.btn-zero {
+  grid-column: span 2;
+}
+
+@media (max-width: 480px) {
+  .calculator {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .btn {
+    padding: 20px;
+    font-size: 1.2rem;
+  }
+
+  .previous-operand {
+    font-size: 1.2rem;
+  }
+
+  .current-operand {
+    font-size: 2rem;
+  }
+}

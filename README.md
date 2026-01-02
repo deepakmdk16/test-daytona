@@ -1,22 +1,31 @@
 # Calculator App
 
-A beautiful, responsive web-based calculator application built with HTML, CSS, and JavaScript.
+A beautiful, responsive calculator web application built with React and Vite.
 
 ## Features
 
 - Basic arithmetic operations: addition, subtraction, multiplication, division
 - Modulo operation support
-- Clean and modern user interface
+- Clean and modern user interface with gradient design
 - Responsive design that works on all devices
 - Keyboard support for quick calculations
 - Division by zero protection
 - Decimal number support
 - Number formatting with thousand separators
+- Built with React hooks for state management
+- Optimized production build with Vite
+
+## Technology Stack
+
+- React 18
+- Vite 6
+- Modern ES6+ JavaScript
+- CSS3 with gradients and animations
 
 ## Usage
 
 ### Mouse/Touch Input
-Simply open `index.html` in your web browser and click the buttons to perform calculations.
+Click the buttons to perform calculations.
 
 ### Keyboard Input
 - **Numbers**: Type 0-9
@@ -37,13 +46,65 @@ Simply open `index.html` in your web browser and click the buttons to perform ca
 - **+ (Addition)**: Adds numbers
 - **= (Equals)**: Computes the result
 
-## Technical Details
+## Development
 
-- Pure JavaScript implementation with no external dependencies
-- Object-oriented design using ES6 classes
-- Event-driven architecture
-- Responsive CSS Grid layout
-- Modern gradient background design
+### Prerequisites
+- Node.js 20 or higher
+- npm
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
+```
+
+### Running Locally
+
+```bash
+npm run dev
+```
+
+The app will be available at http://localhost:8080
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+The optimized production build will be in the `dist` folder.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Docker Deployment
+
+The application includes a production-ready Dockerfile for containerized deployment.
+
+### Building the Docker Image
+
+```bash
+docker build -t calculator-app .
+```
+
+### Running the Docker Container
+
+```bash
+docker run -p 8080:8080 calculator-app
+```
+
+The app will be available at http://localhost:8080
+
+### Docker Features
+- Multi-stage build for optimized image size
+- Uses Node.js 20 slim image
+- Serves static files with `serve`
+- Configured for Cloud Run deployment with PORT environment variable support
 
 ## Browser Compatibility
 
@@ -53,10 +114,6 @@ Works on all modern browsers including:
 - Safari
 - Edge
 
-## Getting Started
+## License
 
-1. Clone or download this repository
-2. Open `index.html` in your web browser
-3. Start calculating!
-
-No build process or installation required.
+MIT
