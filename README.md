@@ -1,28 +1,57 @@
-# Calculator App
+# Scientific Calculator App
 
-A beautiful, responsive calculator web application built with React and Vite.
+A beautiful, responsive scientific calculator web application built with React and Vite, supporting both basic arithmetic and advanced scientific calculations.
 
 ## Features
 
+### Basic Operations
 - Basic arithmetic operations: addition, subtraction, multiplication, division
 - Modulo operation support
-- Clean and modern user interface with glassmorphism design
-- Responsive design that works on all devices
-- Division by zero protection
+- Power operations (x^y)
 - Decimal number support
 - Number formatting with thousand separators
 - Real-time calculation display
 
+### Scientific Functions
+- **Trigonometric Functions**: sin, cos, tan with DEG/RAD mode support
+- **Logarithmic Functions**: log (base 10), ln (natural logarithm)
+- **Exponential Functions**: e^x, 10^x
+- **Power Functions**: x², x³, x^y (custom power)
+- **Root Functions**: √ (square root)
+- **Special Functions**:
+  - 1/x (reciprocal)
+  - |x| (absolute value)
+  - n! (factorial)
+- **Constants**: π (pi), e (Euler's number)
+
+### UI/UX Features
+- Clean and modern user interface with glassmorphism design
+- Responsive design that works on all devices
+- Angle mode switcher (DEG/RAD) for trigonometric functions
+- Division by zero protection
+- Input validation for special functions
+
 ## Operations
 
+### Basic Operations
 - **AC (All Clear)**: Clears all input and resets the calculator
 - **DEL (Delete)**: Removes the last entered digit
-- **% (Modulo)**: Calculates the remainder of division
-- **÷ (Division)**: Divides numbers
-- **× (Multiplication)**: Multiplies numbers
-- **- (Subtraction)**: Subtracts numbers
-- **+ (Addition)**: Adds numbers
+- **÷, ×, -, +**: Basic arithmetic operations
 - **= (Equals)**: Computes the result
+- **% (Modulo)**: Calculates the remainder of division
+- **x^y**: Raises x to the power of y
+
+### Scientific Operations
+- **sin, cos, tan**: Trigonometric functions (respects DEG/RAD mode)
+- **log**: Logarithm base 10
+- **ln**: Natural logarithm
+- **√**: Square root
+- **x², x³**: Square and cube operations
+- **1/x**: Reciprocal
+- **e^x, 10^x**: Exponential functions
+- **|x|**: Absolute value
+- **π, e**: Mathematical constants
+- **n!**: Factorial (non-negative integers only)
 
 ## Technical Stack
 
