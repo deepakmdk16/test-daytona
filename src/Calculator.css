@@ -1,0 +1,272 @@
+.calculator {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  outline: none;
+}
+
+.calculator.scientific {
+  max-width: 650px;
+}
+
+.display {
+  background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+
+.memory-indicator {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.memory-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.previous-operand {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.current-operand {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  min-height: 2.5rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.scientific-grid {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-number {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #2d3436;
+  font-size: 1.4rem;
+}
+
+.btn-number:hover {
+  background: linear-gradient(135deg, #e8ecf1 0%, #b5c0d6 100%);
+}
+
+.btn-operator {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 1.3rem;
+}
+
+.btn-operator:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #663d8f 100%);
+}
+
+.btn-function {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  font-size: 1rem;
+}
+
+.btn-function:hover {
+  background: linear-gradient(135deg, #3e9bed 0%, #00e1ed 100%);
+}
+
+.btn-memory {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.btn-memory:hover {
+  background: linear-gradient(135deg, #32d86a 0%, #27e8c6 100%);
+}
+
+.btn-constant {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+  font-size: 1.3rem;
+}
+
+.btn-constant:hover {
+  background: linear-gradient(135deg, #e95f89 0%, #edd02f 100%);
+}
+
+.btn-special {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #2d3436;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.btn-special:hover {
+  background: linear-gradient(135deg, #97dcd9 0%, #edc5d2 100%);
+}
+
+.btn-parenthesis {
+  background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+  color: #2d3436;
+  font-size: 1.4rem;
+}
+
+.btn-parenthesis:hover {
+  background: linear-gradient(135deg, #c188b1 0%, #ede8c6 100%);
+}
+
+.btn-clear {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.btn-clear:hover {
+  background: linear-gradient(135deg, #e582ea 0%, #e44659 100%);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(135deg, #e95f89 0%, #edd02f 100%);
+}
+
+.btn-equals {
+  background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+  color: white;
+  font-size: 1.4rem;
+}
+
+.btn-equals:hover {
+  background: linear-gradient(135deg, #1fbebf 0%, #2a0756 100%);
+}
+
+.btn-zero {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .calculator.scientific {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .scientific-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .btn {
+    padding: 14px 8px;
+    font-size: 0.95rem;
+  }
+
+  .btn-number {
+    font-size: 1.1rem;
+  }
+
+  .btn-function,
+  .btn-memory,
+  .btn-special {
+    font-size: 0.8rem;
+  }
+
+  .previous-operand {
+    font-size: 1.2rem;
+  }
+
+  .current-operand {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculator {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .calculator.scientific {
+    padding: 12px;
+  }
+
+  .scientific-grid {
+    gap: 5px;
+  }
+
+  .btn {
+    padding: 12px 6px;
+    font-size: 0.85rem;
+  }
+
+  .btn-number {
+    font-size: 1rem;
+  }
+
+  .btn-function,
+  .btn-memory,
+  .btn-special {
+    font-size: 0.7rem;
+  }
+
+  .previous-operand {
+    font-size: 1rem;
+  }
+
+  .current-operand {
+    font-size: 1.6rem;
+  }
+
+  .display {
+    padding: 15px;
+    min-height: 80px;
+  }
+}
